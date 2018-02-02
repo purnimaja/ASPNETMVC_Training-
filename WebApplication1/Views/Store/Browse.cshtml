@@ -1,0 +1,30 @@
+﻿@using WebApplication1.Models;
+@model List<Album>
+
+@{
+    ViewBag.Title = "Browse";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+@*<h2>Browse</h2>*@
+<br>
+<h4 align="left">Total no. of Albums:@ViewBag.AlbumCount</h4>
+<h4> Page title. : @ViewBag.Pagetitle</h4>
+
+<li><a href="/store/Index">Back</a></li>
+
+<div>
+   
+    <h4 align="center">Albums :</h4>
+    <hr/>
+        <ol>
+        @foreach (Album a in Model)
+        {
+               
+            <li>
+                @a.albumname-@Html.ActionLink("Artist Details..", "Details", "Store", new { albumid = @a.albumid }, null)
+            </li>
+
+        }
+     </ol>
+ 
+</div>

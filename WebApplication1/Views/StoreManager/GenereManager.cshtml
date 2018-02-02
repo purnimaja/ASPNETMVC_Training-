@@ -1,0 +1,35 @@
+﻿@using WebApplication1.Models;
+@model List<Genere>
+@{
+    ViewBag.Title = "GenereManager";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+
+<h2 align="center">Manage Genere</h2>
+<h3>CRUD OPERATIONS IN GENERE</h3>
+
+<table width="75%" cellpadding="3" cellspacing="3" border="1">
+    <thead>
+        <tr>
+            <th>Genere Id</th>
+            <th>Genere name</th>
+            <th>Crud Action</th>
+        </tr>
+    </thead>
+
+    @foreach (Genere g in Model)
+    {
+        
+     <tr>
+         <td>@g.genereid</td>
+         <td>@g.generename</td>
+
+         <td>@Html.ActionLink("Edit", "EditGenere", "StoreManager", new { genereid=@g.genereid }, null)</td>
+
+         <td>@Html.ActionLink("Delete", "DeleteGenere", "StoreManager" ,new { genereid=@g.genereid},null)</td>
+    </tr>
+        
+    }
+</table>
+<br> 
+@Html.ActionLink("Add as new Genere","AddGenere","StoreManager")

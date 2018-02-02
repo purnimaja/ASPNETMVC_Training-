@@ -1,0 +1,32 @@
+﻿@using WebApplication1.Models
+@model List<Genere>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+    <h2>List of generes as on @DateTime.Now</h2>
+        <table width="75%" cellpadding="3" cellspacing="3" border="1">
+            <thead>
+                <tr>
+                    <th align="center">Genere Id</th>
+                    <th align="center">Genere name</th>
+                    <th align="center">Account Details</th>
+            
+                </tr>
+                @foreach (Genere g in Model)
+                {
+                    <tr>
+                        <th>@g.genereid</th>
+                        <th>@g.generename</th>
+                      <td>
+                          @Html.ActionLink("Albums...", "Browse", "Store", new { genereid = @g.genereid },null)
+                      </td>
+
+                    </tr>
+                }
+            </thead>
+  </table>
+<span>Genere Count: @ViewBag.GeneresCount</span>

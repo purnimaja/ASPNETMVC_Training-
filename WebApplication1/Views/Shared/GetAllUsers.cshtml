@@ -1,0 +1,17 @@
+﻿@using WebApplication1.Models
+@model List<Users>
+    <table cellpadding="3" cellspacing="3" border="2" width="75%" align="center">
+        <thead>
+            <tr>
+                <th>username</th>
+                <th>password</th>
+                </tr></thead>
+            @foreach(Users u in Model)
+            {
+                <tr>
+                    <td>@u.username</td>
+                    <td>@u.password</td>
+                </tr>
+           }
+
+</table>

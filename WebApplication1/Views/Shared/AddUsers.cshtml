@@ -1,0 +1,30 @@
+﻿ @using WebApplication1.Models
+@model Users
+
+<h3>Add New User</h3>
+@{ 
+    AjaxOptions opt = new AjaxOptions
+    {
+        HttpMethod = "POST",
+        UpdateTargetId="result"
+    };
+
+}
+
+@using (Ajax.BeginForm("AddUsers", "Users", opt))
+{
+    <p>
+        Username:
+        @*@Html.TextBox("Username");*@
+        @Html.TextBoxFor(u => u.username)
+        @Html.ValidationMessageFor(u=>u.username)
+    </p>
+    <p>
+        Password:
+        @*@Html.TextBox("Password");*@
+        @Html.TextBoxFor(u => u.password)
+        @Html.ValidationMessageFor(u => u.password)
+    </p>
+
+    <input type="submit" value="Add user" />
+}

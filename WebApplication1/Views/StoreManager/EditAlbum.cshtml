@@ -1,0 +1,27 @@
+﻿@using WebApplication1.Models;
+@model Album
+@{
+    ViewBag.Title = "EditAlbum";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+
+<h2> </h2>
+
+<div class="container-fluid">
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            <h3 align="center">Edit an album</h3></div>
+        </div>
+    <div class="panel-body">
+        @using (@Html.BeginForm())
+        {
+            <p>Editing album id:@Model.albumid</p>
+            <p>New Album Title:@Html.TextBoxFor(a=>a.albumname)</p>
+            <p>Genere:@Model.Genere.generename</p>
+            <p>Artist:@Model.Artist.artistname</p>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="reset" class="btn btn-primary">Cancel</button>
+            <a href="/StoreManager/AllAlbums">Back</a>
+        }
+    </div>
+</div>

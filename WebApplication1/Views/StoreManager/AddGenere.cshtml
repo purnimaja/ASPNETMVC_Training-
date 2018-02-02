@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "AddGenere";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+@Html.Partial("Time_Partial")
+<h2>Add Genere</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Genere Id
+        @Html.TextBox("genereid")
+    </p>
+    <p>
+        Genere Name
+        @Html.TextBox("generename")
+    </p>
+   
+        <input type="submit" value="Add Genere"/>
+ 
+}
+@Html.ActionLink("cancel","GenereManager","StoreManager")
+

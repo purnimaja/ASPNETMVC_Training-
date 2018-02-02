@@ -1,0 +1,47 @@
+﻿@using WebApplication1.Models;
+@model List<Genere>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+
+
+@*<div>
+    @*<h3 align="center">All Generes</h3>*@
+    <hr />
+
+    @*<h3>Browse Genere :</h3>
+
+    <p>*@
+
+       @*Select from @Model.Count() generes:*@
+
+    </p>
+
+    @*<p>
+            @ViewBag.Message
+        </p>*@
+
+    <ul>
+        @foreach (Genere g in Model)
+        {
+            <li>
+                @*<a href="/store/browse?genereid=@g.genereid">
+                        @g.generename
+                    </a>*@
+
+                @Html.ActionLink(g.generename, "Browse", "Store", new { genereid = g.genereid }, null)
+            </li>
+        }
+    </ul>
+</div>*@
+
+<div>
+    <h3 align="center">All Genere</h3>
+    <ul>
+        @foreach (Genere g in Model)
+        {
+            @Html.ActionLink("Albums..", "Browse", "Store", new { genereid = @g.GenereId })
+        }
+    </ul>
+</div>

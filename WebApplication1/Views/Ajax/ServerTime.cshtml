@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "ServerTime";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+
+<h2>Server Time</h2>
+@*@Html.ActionLink("Get Server Time","GetServerTime","Ajax")*@
+@*//text to display,action result,controllername*@ 
+@Ajax.ActionLink("Get Server Time", "GetServerTime", "Ajax", new AjaxOptions
+{
+    HttpMethod = "GET",
+    UpdateTargetId = "result",
+    LoadingElementId="progress"
+
+})
+<br>
+<span id="progress" style="display:none">Please wait while the current time is retrieved...</span>
+<br>
+<span id="result"></span>

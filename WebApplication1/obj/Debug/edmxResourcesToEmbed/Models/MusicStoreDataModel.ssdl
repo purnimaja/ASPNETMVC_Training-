@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MusicStoreDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Album">
+    <Key>
+      <PropertyRef Name="albumid" />
+    </Key>
+    <Property Name="albumid" Type="int" Nullable="false" />
+    <Property Name="albumname" Type="varchar" MaxLength="50" />
+    <Property Name="genereid" Type="int" />
+    <Property Name="artistid" Type="int" />
+  </EntityType>
+  <EntityType Name="Artist">
+    <Key>
+      <PropertyRef Name="artistid" />
+    </Key>
+    <Property Name="artistid" Type="int" Nullable="false" />
+    <Property Name="artistname" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Genere">
+    <Key>
+      <PropertyRef Name="genereid" />
+    </Key>
+    <Property Name="genereid" Type="int" Nullable="false" />
+    <Property Name="generename" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Album_Artist">
+    <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Artist">
+        <PropertyRef Name="artistid" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="artistid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Album_Genere">
+    <End Role="Genere" Type="Self.Genere" Multiplicity="0..1" />
+    <End Role="Album" Type="Self.Album" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genere">
+        <PropertyRef Name="genereid" />
+      </Principal>
+      <Dependent Role="Album">
+        <PropertyRef Name="genereid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MusicStoreDbModelStoreContainer">
+    <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Genere" EntityType="Self.Genere" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Album_Artist" Association="Self.FK_Album_Artist">
+      <End Role="Artist" EntitySet="Artist" />
+      <End Role="Album" EntitySet="Album" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Album_Genere" Association="Self.FK_Album_Genere">
+      <End Role="Genere" EntitySet="Genere" />
+      <End Role="Album" EntitySet="Album" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

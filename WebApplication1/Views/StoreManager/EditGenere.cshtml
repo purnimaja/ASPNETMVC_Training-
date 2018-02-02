@@ -1,0 +1,24 @@
+﻿@using WebApplication1.Models
+@model Genere
+
+@{
+    ViewBag.Title = "EditGenere";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+
+
+
+<h2>Edit Genere</h2>
+@using (Html.BeginForm())
+{
+    <span id="genereid">@Model.genereid</span>
+
+    <p>
+        Genere Name
+        @Html.TextBox("generename", Model.generename)
+    </p>
+
+    <input type="submit" value="Edit Genere" />
+
+}
+@Html.ActionLink("cancel", "GenereManager", "StoreManager")

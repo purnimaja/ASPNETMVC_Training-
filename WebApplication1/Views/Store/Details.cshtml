@@ -1,0 +1,22 @@
+﻿@using WebApplication1.Models;
+@model Artist
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+<br>
+
+<h4><b>Details of Artists:-</b></h4>
+
+
+
+<div>
+    <p>
+       Artistid: @Model.artistid <br />
+       Artistname: @Model.artistname
+ </p>
+
+    @*<li><a href="/store/index/">Back</a></li>*@
+
+    @Html.ActionLink("Back to browse", "Browse", "Store")
+</div>

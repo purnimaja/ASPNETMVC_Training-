@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "DeleteGenere";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+
+
+
+
+<h2>Delete Genere</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Genere Id
+        @Html.TextBox("genereid")
+    </p>
+   
+
+    <input type="submit" value="Delete Genere" />
+
+}
+@Html.ActionLink("cancel", "GenereManager", "StoreManager")

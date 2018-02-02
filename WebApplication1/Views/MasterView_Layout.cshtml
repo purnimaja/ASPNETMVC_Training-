@@ -1,0 +1,47 @@
+﻿<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+    @*<script src="~/scripts/jquery.validate.unobtrusive.js"></script>*@
+
+    <link href="~/Controllers/Content/bootstrap.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/Content/bootstrap.min.css"/>*@
+</head>
+<body>
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <hr>
+                <h2 align="center" color="blue">Music store App Using Asp.net MVC</h2><hr>
+
+                <center>
+                    <img src="~/Images/images.jpg" width="100" height="100">
+                </center>
+            </div>
+            <br>
+            <div class="panel-body">
+                <div class="navbar navbar-default">
+                    <ul class="nav navbar-nav">
+
+                        <li><a href="/Home/Index">Home</a></li>
+                        <li> <a href="/store/index"> Music Store</a></li>
+                        <li> <a href="/StoreManager/AllAlbums">Manage Genere</a></li>
+                        <li> <a href="/Search/Search">Search</a></li>
+                        @*<a href="/Ajax/servertime">Ajax Demo</a>
+                            <a href="/User">User Management</a>*@
+
+                    </ul>
+                 
+                    <br />
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+       
+</body>
+</html>

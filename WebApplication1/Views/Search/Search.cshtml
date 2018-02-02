@@ -1,0 +1,83 @@
+﻿@*@using WebApplication1.Models;*@
+
+<br>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/MasterView_Layout.cshtml";
+}
+<html>
+<head>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/jquery-1.9.1.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+   
+</head>
+
+<body>
+    <script>
+        function Search() {
+            var searchname = $("#inputbox").val();
+           
+
+            if (searchname.localeCompare("")) {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://localhost:61389/Search/GetAllSearch/' + searchname,
+                    success: function (result) {
+
+                        $("#display tbody").html("");
+                        for (var i = 0; i < result.length; i++) {
+                            $("#display").append("<tr><td>" + result[i].albumname + "</td><td>" + result[i].artistname + "</td></tr>");
+                        }
+                    },
+                    error: function (error) {
+                        //console.log(error.Message);
+                        alert(JSON.parse(error.responseText).Message);
+                    }
+
+                });
+            }
+            else {
+                //alert("Artistname not Found...");
+            }
+        }
+
+    </script>
+
+  
+    <div class="container-fluid">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+               <h3 align="center">Search by artist name</h3>
+
+                @using (Html.BeginForm())
+                {
+                      <p>
+                       Album Name:
+                      <input type="text" id="inputbox" name="artistname" style="color:black!important" onkeyup="Search()">
+                    </p>
+                }
+             <div class="row"></div>
+            </div>
+
+            <div class="panel panel-body">
+
+                <table id="display" cellpadding="5" cellspacing="5" border="5">
+                    <thead>
+                        <tr>
+                           
+                            <th>albumname</th>
+                            <th>artistname</th>
+                        </tr>
+                    </thead>
+                    
+                </table>
+            </div>
+        </div>
+     </div>
+
+    </body>
+</html>
+
+
